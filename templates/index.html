@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Watchlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Watchlist</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('index') }}" method="post">
+            <input type="text" name="ticker" placeholder="Enter ticker symbol">
+            <button type="submit">Add</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Price</th>
+                    <th>Date/Time</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Volume</th>
+                    <th>Change</th>
+                    <th>Change</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks_data %}
+                    <tr>
+                        <td>{{ stock.ticker }}</td>
+                        <td>{{ stock.price }}</td>
+                        <td>{{ stock.date_time }}</td>
+                        <td>{{ stock.high }}</td>
+                        <td>{{ stock.low }}</td>
+                        <td>{{ stock.volume }}</td>
+                        <td>{{ stock.change }}</td>
+                        <td>{{ stock.change_percent }}</td>
+                        <td><a href="{{ url_for('remove', ticker=stock.ticker) }}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

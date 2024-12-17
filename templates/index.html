@@ -9,6 +9,12 @@
 <body>
     <div class="container">
         <h1>Stock Watchlist</h1>
+        
+        <!-- "For More Info" link -->
+        <div class="more-info">
+            <a href="https://stockanalysis.com/stocks/" target="_blank">For More Info</a>
+        </div>
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul class="flashes">
@@ -28,13 +34,14 @@
             <thead>
                 <tr>
                     <th>Ticker</th>
+                    <th>Company Name</th>
                     <th>Price</th>
                     <th>Date/Time</th>
                     <th>High</th>
                     <th>Low</th>
                     <th>Volume</th>
                     <th>Change</th>
-                    <th>Change</th>
+                    <th>Change Percent</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -42,6 +49,7 @@
                 {% for stock in stocks_data %}
                     <tr>
                         <td>{{ stock.ticker }}</td>
+                        <td>{{ stock.company_name }}</td>
                         <td>{{ stock.price }}</td>
                         <td>{{ stock.date_time }}</td>
                         <td>{{ stock.high }}</td>

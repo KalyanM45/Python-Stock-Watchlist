@@ -18,6 +18,22 @@ h1 {
     text-align: center;
 }
 
+/* Position the "For More Info" link at the top-right */
+.more-info {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.more-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.more-info a:hover {
+    text-decoration: underline;
+}
+
 form {
     display: flex;
     justify-content: center;
@@ -38,6 +54,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    text-align: center; /* Centering the table content */
 }
 
 table, th, td {
@@ -46,7 +63,6 @@ table, th, td {
 
 th, td {
     padding: 10px;
-    text-align: left;
 }
 
 th {
